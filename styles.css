@@ -548,6 +548,7 @@ body {
     .section {
         grid-template-columns: 1fr;
         gap: 2rem;
+        padding: 1rem 0.5rem;
     }
 
     .section-alternate {
@@ -565,6 +566,7 @@ body {
     .section-wrapper {
         grid-template-columns: 1fr;
         gap: 2rem;
+        padding: 1rem;
     }
     
     .section h2 {
