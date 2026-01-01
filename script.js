@@ -85,10 +85,17 @@ function animateNetwork() {
 initParticles();
 animateNetwork();
 
+let lastWidth = window.innerWidth;
+let lastHeight = window.innerHeight;
+
 window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    initParticles();
+    if (window.innerWidth !== lastWidth || window.innerHeight !== lastHeight) {
+        lastWidth = window.innerWidth;
+        lastHeight = window.innerHeight;
+        canvas.width = lastWidth;
+        canvas.height = lastHeight;
+        initParticles();
+    }
 });
 
 // Mobile Navigation Toggle
