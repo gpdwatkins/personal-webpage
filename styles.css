@@ -103,7 +103,8 @@ body {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,6 +114,7 @@ body {
     padding: 2rem;
     position: relative;
     margin-bottom: 1rem;
+    overflow: hidden;
 }
 
 .hero::after {
