@@ -269,6 +269,12 @@ body {
     box-shadow: none;
 }
 
+#research .section-image img {
+    max-width: 50%; 
+    margin: 0 auto;
+    display: block;
+}
+
 .section-image-top {
     grid-column: 1 / -1;
     width: 100%;
