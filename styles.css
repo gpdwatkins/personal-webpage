@@ -508,7 +508,8 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) { */
+@media (max-width: 1075px) {
     .hamburger {
         display: flex;
     }
@@ -548,7 +549,8 @@ body {
     .section {
         grid-template-columns: 1fr;
         gap: 2rem;
-        padding: 1rem 0.5rem;
+        /* padding: 1rem 0.5rem; */
+        padding: 0rem 0.5rem;
     }
 
     .section-alternate {
@@ -567,6 +569,7 @@ body {
         grid-template-columns: 1fr;
         gap: 2rem;
         padding: 1rem;
+        margin-bottom: 1rem;
     }
     
     .section h2 {
