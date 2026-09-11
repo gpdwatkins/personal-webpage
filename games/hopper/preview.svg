@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 160">
+  <defs>
+    <radialGradient id="orangeMarble" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#f6be82"/>
+      <stop offset="45%" stop-color="#c87828"/>
+      <stop offset="100%" stop-color="#8a5015"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="260" height="160" fill="#162033"/>
+
+  <!-- 9 cells arranged in the horseshoe/arch layout: both ends at the
+       bottom, arcing up over the top. Centre = (130,120), radius = 85 —
+       sized so the arc spans the same 34-226 horizontal footprint as the
+       one-pile-nim preview's grid. Cell radius 14 keeps a clear gap between
+       neighbours (chord spacing along this arc is ~33px). -->
+
+  <!-- Cell backgrounds (drawn first, under everything) -->
+  <circle cx="45"    cy="120"  r="14" fill="#1e2f47" stroke="#2a3f5a" stroke-width="1.5"/>
+  <circle cx="51.5"  cy="87.5" r="14" fill="#1e2f47" stroke="#2a3f5a" stroke-width="1.5"/>
+  <circle cx="69.9"  cy="59.9" r="14" fill="#1e2f47" stroke="#2a3f5a" stroke-width="1.5"/>
+  <circle cx="97.5"  cy="41.5" r="14" fill="#1e2f47" stroke="#2a3f5a" stroke-width="1.5"/>
+  <circle cx="130"   cy="35"   r="14" fill="#1e2f47" stroke="#2a3f5a" stroke-width="1.5"/>
+  <circle cx="162.5" cy="41.5" r="14" fill="#1e2f47" stroke="#2a3f5a" stroke-width="1.5"/>
+  <circle cx="190.1" cy="59.9" r="14" fill="#1e2f47" stroke="#2a3f5a" stroke-width="1.5"/>
+  <circle cx="208.5" cy="87.5" r="14" fill="#1e2f47" stroke="#2a3f5a" stroke-width="1.5"/>
+  <circle cx="215"   cy="120"  r="14" fill="#1e2f47" stroke="#2a3f5a" stroke-width="1.5"/>
+
+  <!-- Numbers on the empty cells -->
+  <text x="51.5"  y="91.5" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#7a92a8">2</text>
+  <text x="69.9"  y="63.9" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#7a92a8">3</text>
+  <text x="97.5"  y="45.5" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#7a92a8">4</text>
+  <text x="162.5" y="45.5" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#7a92a8">6</text>
+  <text x="190.1" y="63.9" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#7a92a8">7</text>
+  <text x="208.5" y="91.5" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#7a92a8">8</text>
+
+  <!-- Counters: all three the same neutral colour, no selection highlight,
+       sized to fit comfortably within their cells -->
+  <circle cx="45"  cy="120" r="10" fill="url(#orangeMarble)"/>
+  <circle cx="130" cy="35"  r="10" fill="url(#orangeMarble)"/>
+  <circle cx="215" cy="120" r="10" fill="url(#orangeMarble)"/>
+</svg>

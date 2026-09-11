@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gravity</title>
+  <link rel="stylesheet" href="../../navbar.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- navbar injected by navbar.js -->
+
+  <main>
+
+    <!-- ── Settings screen ───────────────────────────────────────── -->
+    <section id="settings-screen">
+      <h1 class="game-title">Gravity</h1>
+      <div class="card">
+        <div class="card-header">
+          <h2>Settings</h2>
+          <button id="close-settings-btn" class="btn-close" hidden>&times;</button>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Height</label>
+          <div class="option-group" id="height-options">
+            <label class="option-box"><input type="radio" name="height" value="5">5</label>
+            <label class="option-box"><input type="radio" name="height" value="7" checked>7</label>
+            <label class="option-box"><input type="radio" name="height" value="9">9</label>
+            <label class="option-box"><input type="radio" name="height" value="11">11</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Width</label>
+          <div class="option-group" id="width-options">
+            <label class="option-box"><input type="radio" name="width" value="3" checked>3</label>
+            <label class="option-box"><input type="radio" name="width" value="5">5</label>
+            <label class="option-box"><input type="radio" name="width" value="7">7</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Opponent</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="opponent" value="human" checked>
+              Human
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="opponent" value="computer">
+              Computer <span class="tag">Novice</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="opponent" value="expert">
+              Computer <span class="tag">Expert</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Who goes first?</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="first-player" value="player1" checked>
+              Player 1
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="first-player" value="player2">
+              <span id="p2-label">Player 2</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="first-player" value="random">
+              Random
+            </label>
+          </div>
+        </div>
+
+        <button id="start-btn" class="btn-primary">Start Game</button>
+      </div>
+    </section>
+
+    <!-- ── Game screen ────────────────────────────────────────────── -->
+    <section id="game-screen" hidden>
+
+      <div class="game-bar">
+        <div id="turn-indicator" class="turn-indicator"></div>
+        <div class="game-bar-actions">
+          <button id="see-rules-btn" class="btn-ghost">See rules</button>
+          <button id="back-btn" class="btn-ghost">Settings</button>
+        </div>
+      </div>
+
+      <div id="board-wrap" class="board-wrap">
+        <svg id="gravity-board" class="gravity-board"></svg>
+      </div>
+
+      <div id="prompt-section" class="moves-section" hidden>
+        <p id="prompt-label" class="moves-label">Select a vertex to move the counter down to</p>
+      </div>
+
+      <div id="thinking-indicator" class="thinking-indicator" hidden>
+        Computer is thinking…
+      </div>
+
+      <div id="rules-panel" class="rules-panel">
+        <div class="rules-box">
+          <h2 id="rules-panel-title" class="rules-panel-title"></h2>
+          <ul id="rules-list" class="rules-list"></ul>
+          <button id="rules-play-btn" class="btn-primary">Let's play!</button>
+        </div>
+      </div>
+
+      <div id="game-over-panel" class="game-over-panel">
+        <div class="game-over-box">
+          <div id="game-over-subtitle" class="game-over-subtitle">The counter has reached the bottom.</div>
+          <div id="winner-text" class="winner-text"></div>
+          <div class="game-over-actions">
+            <button id="play-again-btn" class="btn-primary">Play Again</button>
+            <button id="new-game-btn" class="btn-ghost">Change Settings</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="../../navbar.js" data-root="../../" data-back-href="../index.html" data-back-label="Games"></script>
+  <script src="game.js"></script>
+</body>
+</html>

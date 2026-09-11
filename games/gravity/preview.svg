@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 160">
+  <rect width="260" height="160" fill="#162033"/>
+  <!-- Board: H=7, W=5 - stacked hexagons of equilateral triangles, unit=34px, rowSpacing=unit/sqrt(3)~19.63, top margin=21 -->
+  <g stroke="#2a3f5a" stroke-width="2" fill="none">
+    <line x1="130" y1="21.00"  x2="96"  y2="40.63"/>
+    <line x1="130" y1="21.00"  x2="164" y2="40.63"/>
+    <line x1="130" y1="21.00"  x2="130" y2="60.26"/>
+
+    <line x1="96"  y1="40.63"  x2="62"  y2="60.26"/>
+    <line x1="96"  y1="40.63"  x2="130" y2="60.26"/>
+    <line x1="96"  y1="40.63"  x2="96"  y2="79.89"/>
+
+    <line x1="164" y1="40.63"  x2="130" y2="60.26"/>
+    <line x1="164" y1="40.63"  x2="198" y2="60.26"/>
+    <line x1="164" y1="40.63"  x2="164" y2="79.89"/>
+
+    <line x1="62"  y1="60.26"  x2="96"  y2="79.89"/>
+    <line x1="62"  y1="60.26"  x2="62"  y2="99.52"/>
+
+    <line x1="130" y1="60.26"  x2="96"  y2="79.89"/>
+    <line x1="130" y1="60.26"  x2="164" y2="79.89"/>
+    <line x1="130" y1="60.26"  x2="130" y2="99.52"/>
+
+    <line x1="198" y1="60.26"  x2="164" y2="79.89"/>
+    <line x1="198" y1="60.26"  x2="198" y2="99.52"/>
+
+    <line x1="96"  y1="79.89"  x2="62"  y2="99.52"/>
+    <line x1="96"  y1="79.89"  x2="130" y2="99.52"/>
+    <line x1="96"  y1="79.89"  x2="96"  y2="119.15"/>
+
+    <line x1="164" y1="79.89"  x2="130" y2="99.52"/>
+    <line x1="164" y1="79.89"  x2="198" y2="99.52"/>
+    <line x1="164" y1="79.89"  x2="164" y2="119.15"/>
+
+    <line x1="62"  y1="99.52"  x2="96"  y2="119.15"/>
+
+    <line x1="130" y1="99.52"  x2="96"  y2="119.15"/>
+    <line x1="130" y1="99.52"  x2="164" y2="119.15"/>
+    <line x1="130" y1="99.52"  x2="130" y2="138.78"/>
+
+    <line x1="198" y1="99.52"  x2="164" y2="119.15"/>
+
+    <line x1="96"  y1="119.15" x2="130" y2="138.78"/>
+    <line x1="164" y1="119.15" x2="130" y2="138.78"/>
+  </g>
+  <g fill="#1e2f47" stroke="#2a3f5a" stroke-width="1.5">
+    <circle cx="96"  cy="40.63"  r="4.5"/>
+    <circle cx="164" cy="40.63"  r="4.5"/>
+    <circle cx="62"  cy="60.26"  r="4.5"/>
+    <circle cx="130" cy="60.26"  r="4.5"/>
+    <circle cx="198" cy="60.26"  r="4.5"/>
+    <circle cx="96"  cy="79.89"  r="4.5"/>
+    <circle cx="164" cy="79.89"  r="4.5"/>
+    <circle cx="62"  cy="99.52"  r="4.5"/>
+    <circle cx="130" cy="99.52"  r="4.5"/>
+    <circle cx="198" cy="99.52"  r="4.5"/>
+    <circle cx="96"  cy="119.15" r="4.5"/>
+    <circle cx="164" cy="119.15" r="4.5"/>
+    <circle cx="130" cy="138.78" r="4.5"/>
+  </g>
+  <defs>
+    <radialGradient id="previewCounterGradient" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#f5d030"/>
+      <stop offset="55%" stop-color="#c87828"/>
+      <stop offset="100%" stop-color="#8a4f16"/>
+    </radialGradient>
+  </defs>
+  <circle cx="130" cy="21.00" r="10.5" fill="url(#previewCounterGradient)" stroke="rgba(0,0,0,0.35)" stroke-width="1"/>
+</svg>

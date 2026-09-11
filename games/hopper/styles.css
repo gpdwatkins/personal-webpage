@@ -1,0 +1,407 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #0f1b2d;
+  --navy-mid:    #162033;
+  --navy-light:  #1e2f47;
+  --border:      #2a3f5a;
+  --text:        #e0e8f0;
+  --muted:       #7a92a8;
+  --accent:      #4d79ff;
+  --orange:      #f0ad4e;
+  --red:         #e84040;
+  --red-bg:      rgba(232,64,64,0.12);
+  --red-border:  rgba(232,64,64,0.45);
+  --blue:        #4488ff;
+  --blue-bg:     rgba(68,136,255,0.12);
+  --blue-border: rgba(68,136,255,0.45);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--navy);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── Layout ─────────────────────────────────────────────────────── */
+
+main {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* ── Settings card ──────────────────────────────────────────────── */
+
+#settings-screen { width: 100%; max-width: 560px; }
+
+.game-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.card {
+  background: var(--navy-mid);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.8rem;
+}
+
+.card h2 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.btn-close {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.1rem 0.2rem;
+  transition: color 0.2s;
+}
+.btn-close:hover { color: var(--text); }
+
+.field { margin-bottom: 1.5rem; }
+
+.field-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.55rem;
+}
+
+/* ── Slider ──────────────────────────────────────────────────────── */
+
+.slider-wrap { margin-top: 0.3rem; }
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+  cursor: pointer;
+  height: 6px;
+  display: block;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+#board-size-display {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ── Radio ───────────────────────────────────────────────────────── */
+
+.radio-group { display: flex; flex-wrap: wrap; gap: 0.45rem 1.2rem; }
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+.radio-label input[type="radio"] { accent-color: var(--accent); width: 15px; height: 15px; cursor: pointer; }
+
+.tag {
+  font-size: 0.7rem;
+  background: var(--navy-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  color: var(--muted);
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────── */
+
+.btn-primary {
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.2s;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+.btn-primary:hover { filter: brightness(1.15); }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 6px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover { border-color: var(--muted); color: var(--text); }
+
+/* ── Game screen ─────────────────────────────────────────────────── */
+
+#game-screen { width: 100%; max-width: 820px; }
+
+/* ── Game bar ────────────────────────────────────────────────────── */
+
+.game-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.3rem;
+}
+
+.game-bar-actions { display: flex; gap: 0.5rem; }
+
+.turn-indicator {
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 0.4rem 1.1rem;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  transition: color 0.3s, background 0.3s, border-color 0.3s;
+}
+.turn-indicator.p1 { color: var(--red);  background: var(--red-bg);  border-color: var(--red-border); }
+.turn-indicator.p2 { color: var(--blue); background: var(--blue-bg); border-color: var(--blue-border); }
+
+/* ── Board ───────────────────────────────────────────────────────── */
+
+.board-wrap {
+  background: var(--navy-mid);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.hopper-board {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.hopper-box {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy-light);
+  border: 1.5px solid var(--border);
+  border-radius: 50%;
+  z-index: 1;
+  transition: background 0.18s, border-color 0.18s;
+}
+
+.hopper-num {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.hopper-box.occupied .hopper-num {
+  display: none;
+}
+
+.hopper-box.movable {
+  cursor: pointer;
+  border-width: 2px;
+}
+.hopper-box.movable.p1 { background: var(--red-bg);  border-color: var(--red-border); }
+.hopper-box.movable.p2 { background: var(--blue-bg); border-color: var(--blue-border); }
+.hopper-box.movable.p1:hover { border-color: var(--red); }
+.hopper-box.movable.p2:hover { border-color: var(--blue); }
+
+/* ── Counter marbles ─────────────────────────────────────────────── */
+
+.counter-marble {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: #c87828;
+  box-shadow: inset -2px -4px 6px rgba(0,0,0,0.35), inset 0 3px 4px rgba(255,200,80,0.15);
+  transition: background 0.25s, box-shadow 0.25s, transform 0.2s, filter 0.2s;
+  z-index: 2;
+}
+
+/* Selectable-but-not-chosen: a steady (non-flashing) ring and a slight lift,
+   so it reads as "available" without drawing the eye the way a pulse would. */
+.counter-marble.selectable {
+  cursor: pointer;
+  transform: scale(1.08);
+  filter: brightness(1.2);
+}
+.counter-marble.selectable.p1 { box-shadow: 0 0 0 4px var(--red-border),  inset -2px -4px 6px rgba(0,0,0,0.35); }
+.counter-marble.selectable.p2 { box-shadow: 0 0 0 4px var(--blue-border), inset -2px -4px 6px rgba(0,0,0,0.35); }
+
+/* Selected: solid fill in the player's colour with a bright white ring, so
+   it's unmistakably different from the merely-selectable pulsing ring. */
+.counter-marble.selected {
+  animation: none;
+  transform: scale(1.18);
+}
+.counter-marble.selected.p1 { background: var(--red);  box-shadow: 0 0 0 3px #fff, 0 0 16px rgba(232,64,64,0.9); }
+.counter-marble.selected.p2 { background: var(--blue); box-shadow: 0 0 0 3px #fff, 0 0 16px rgba(68,136,255,0.9); }
+
+/* ── Prompt ──────────────────────────────────────────────────────── */
+
+.moves-section { text-align: center; margin-bottom: 1rem; }
+
+.moves-label {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* ── Thinking indicator ──────────────────────────────────────────── */
+
+.thinking-indicator {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  padding: 0.7rem;
+  animation: pulse 1.3s ease-in-out infinite;
+}
+
+@keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+/* ── Rules panel ─────────────────────────────────────────────────── */
+
+.rules-panel {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 27, 45, 0.8);
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: overlayFadeIn 0.2s ease;
+}
+.rules-panel.active { display: flex; }
+
+.rules-box {
+  background: var(--navy-mid);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  animation: boxSlideUp 0.3s ease;
+}
+
+.rules-panel-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  color: var(--text);
+}
+
+.rules-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+
+.rules-list li {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.rules-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* ── Game-over panel ─────────────────────────────────────────────── */
+
+.game-over-panel {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 27, 45, 0.8);
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: overlayFadeIn 0.2s ease;
+}
+.game-over-panel.active { display: flex; }
+
+.game-over-box {
+  background: var(--navy-mid);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  max-width: 360px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  animation: boxSlideUp 0.3s ease;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes boxSlideUp {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+.winner-text {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.3rem;
+}
+.winner-text.p1 { color: var(--red); }
+.winner-text.p2 { color: var(--blue); }
+
+.game-over-actions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.game-over-actions .btn-primary { width: auto; margin-top: 0; }
+
+/* ── Mobile ──────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  main { padding: 1rem 0.75rem; }
+  .card { padding: 1.2rem; }
+  .board-wrap { padding: 1.1rem 0.7rem; }
+}

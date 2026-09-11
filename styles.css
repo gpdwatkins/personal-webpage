@@ -272,9 +272,23 @@ body {
 }
 
 #research .section-image img {
-    max-width: 50%; 
+    max-width: 50%;
     margin: 0 auto;
     display: block;
+}
+
+.games-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.games-preview-grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .section-image-top {
@@ -638,5 +652,9 @@ body {
     .contact-btn {
         padding: 0.6rem 1rem;
         font-size: 0.9rem;
+    }
+
+    .games-preview-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

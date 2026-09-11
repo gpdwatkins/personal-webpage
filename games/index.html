@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games | George Watkins</title>
+  <link rel="stylesheet" href="../navbar.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0f1b2d;
+      --navy-mid:   #162033;
+      --border:     #2a3f5a;
+      --text:       #e0e8f0;
+      --muted:      #7a92a8;
+      --accent:     #4d79ff;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Page heading ────────────────────────────────── */
+
+    .page-heading {
+      text-align: center;
+      padding: 2.5rem 1.5rem 0;
+    }
+    .page-heading h1 { font-size: 2rem; }
+
+    /* ── Main content ────────────────────────────────── */
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* ── Game grid ───────────────────────────────────── */
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .game-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .game-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    }
+
+    .game-card-img {
+      width: 100%;
+      display: block;
+    }
+
+    .game-card-body {
+      padding: 1rem 1.2rem;
+    }
+
+    .game-card h2 {
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    /* ── Footer ──────────────────────────────────────── */
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      .page-heading { padding: 2rem 1rem 0; }
+      main { padding: 1.5rem 1rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- navbar injected by navbar.js -->
+
+  <div class="page-heading">
+    <h1>Games</h1>
+  </div>
+
+  <main>
+    <p class="intro">
+      A collection of games you can play in your browser, against a friend or the computer.
+    </p>
+
+    <div class="game-grid">
+
+      <a href="one-pile-nim/index.html" class="game-card">
+        <img src="one-pile-nim/preview.svg" alt="One-pile Nim preview" class="game-card-img">
+        <div class="game-card-body">
+          <h2>One-pile Nim</h2>
+        </div>
+      </a>
+
+      <a href="two-pile-nim/index.html" class="game-card">
+        <img src="two-pile-nim/preview.svg" alt="Two-pile Nim preview" class="game-card-img">
+        <div class="game-card-body">
+          <h2>Two-pile Nim</h2>
+        </div>
+      </a>
+
+      <a href="chomp/index.html" class="game-card">
+        <img src="chomp/preview.svg" alt="Chomp preview" class="game-card-img">
+        <div class="game-card-body">
+          <h2>Chomp</h2>
+        </div>
+      </a>
+
+      <a href="cram/index.html" class="game-card">
+        <img src="cram/preview.svg" alt="Cram preview" class="game-card-img">
+        <div class="game-card-body">
+          <h2>Cram</h2>
+        </div>
+      </a>
+
+      <a href="gravity/index.html" class="game-card">
+        <img src="gravity/preview.svg" alt="Gravity preview" class="game-card-img">
+        <div class="game-card-body">
+          <h2>Gravity</h2>
+        </div>
+      </a>
+
+      <a href="hopper/index.html" class="game-card">
+        <img src="hopper/preview.svg" alt="Hopper preview" class="game-card-img">
+        <div class="game-card-body">
+          <h2>Hopper</h2>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 George Watkins</p>
+  </footer>
+
+  <script src="../navbar.js" data-root="../" data-back-href="../index.html" data-back-label="Home"></script>
+</body>
+</html>
