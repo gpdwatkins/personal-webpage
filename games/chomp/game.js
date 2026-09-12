@@ -425,6 +425,7 @@ function applyMove(moveR, moveC) {
 
   setTimeout(() => {
     state.busy = false;
+    renderGrid();   // re-attach listeners now that busy has cleared
     renderPrompt(); // now show prompt (or let scheduleComputer take over)
     if (isComputerTurn()) scheduleComputer();
   }, 300);
@@ -509,21 +510,22 @@ function renderGrid() {
 
 function highlightChomp(hoverR, hoverC) {
   const cells = chompGrid.querySelectorAll('.chomp-cell');
-  const { rows, cols, colStart } = state;
+  const { colStart } = state;
+  const playerClass = `p${state.currentPlayer}`;
   cells.forEach(cell => {
     const r = +cell.dataset.r;
     const c = +cell.dataset.c;
     const removed = c < colStart[r];
     if (!removed && r <= hoverR && c <= hoverC) {
-      cell.classList.add('will-chomp');
+      cell.classList.add('will-chomp', playerClass);
     } else {
-      cell.classList.remove('will-chomp');
+      cell.classList.remove('will-chomp', 'p1', 'p2');
     }
   });
 }
 
 function clearHighlight() {
-  chompGrid.querySelectorAll('.will-chomp').forEach(c => c.classList.remove('will-chomp'));
+  chompGrid.querySelectorAll('.will-chomp').forEach(c => c.classList.remove('will-chomp', 'p1', 'p2'));
 }
 
 function renderTurnIndicator() {

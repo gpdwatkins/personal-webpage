@@ -227,9 +227,17 @@ input[type="range"] {
 }
 
 .chomp-cell.will-chomp:not(.removed) {
-  background: rgba(77,121,255,0.22);
-  border-color: var(--accent);
   transform: scale(1.04);
+}
+
+.chomp-cell.will-chomp.p1:not(.removed) {
+  background: var(--red-bg);
+  border-color: var(--red-border);
+}
+
+.chomp-cell.will-chomp.p2:not(.removed) {
+  background: var(--blue-bg);
+  border-color: var(--blue-border);
 }
 
 .chomp-cell.removed {
