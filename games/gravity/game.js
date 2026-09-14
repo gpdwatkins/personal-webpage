@@ -462,7 +462,10 @@ function updateBoard() {
 
 function renderTurnIndicator() {
   if (state.over) {
-    turnIndicator.textContent = '';
+    // A non-breaking space (not '') keeps the pill's line box — and so its
+    // height — the same as when it holds real text, so nothing below it
+    // (the board, the "in association with" badge) shifts up at game over.
+    turnIndicator.textContent = ' ';
     turnIndicator.className = 'turn-indicator';
     return;
   }
@@ -477,7 +480,7 @@ function renderPrompt() {
     return;
   }
   promptSection.hidden = false;
-  promptLabel.textContent = 'Select a highlighted vertex to move the counter down to';
+  promptLabel.textContent = 'Select a highlighted vertex to move the counter';
 }
 
 function renderGameOver() {

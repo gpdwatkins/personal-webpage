@@ -304,6 +304,10 @@ input[type="range"] {
   align-items: stretch;
   gap: 1.2rem;
   margin-bottom: 1rem;
+  background: var(--navy-mid);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem;
 }
 
 .pile-block {
@@ -374,9 +378,27 @@ input[type="range"] {
   box-shadow: none;
 }
 
-/* ── Move buttons ────────────────────────────────────────────────── */
+/* ── Move buttons / thinking indicator ──────────────────────────────
+   These occupy the same slot (stacked via grid) so that whichever one
+   is showing, the slot is always the same height — the badge below
+   never jumps, regardless of how the two compare in size. */
 
-.moves-section { text-align: center; margin-bottom: 1rem; }
+.status-slot {
+  display: grid;
+  margin-bottom: 1rem;
+}
+
+.status-slot > * {
+  grid-area: 1 / 1;
+}
+
+#moves-section[hidden],
+#thinking-indicator[hidden] {
+  display: block;
+  visibility: hidden;
+}
+
+.moves-section { text-align: center; }
 
 .moves-label {
   color: var(--muted);
@@ -454,7 +476,7 @@ input[type="range"] {
   text-align: center;
   color: var(--muted);
   font-style: italic;
-  padding: 0.7rem;
+  font-size: 0.92rem;
   animation: pulse 1.3s ease-in-out infinite;
 }
 
@@ -572,7 +594,7 @@ input[type="range"] {
 /* ── Mobile ──────────────────────────────────────────────────────── */
 
 @media (max-width: 600px) {
-  .piles-area { gap: 0.7rem; }
+  .piles-area { gap: 0.7rem; padding: 0.8rem; }
   .counter-area { padding: 0.7rem; gap: 5px; }
   .piles-divider { width: 1px; }
   .move-columns { gap: 0.7rem; }

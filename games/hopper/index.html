@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hopper</title>
   <link rel="stylesheet" href="../../navbar.css">
+  <link rel="stylesheet" href="../attribution.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -88,12 +89,14 @@
         <div id="hopper-board" class="hopper-board"></div>
       </div>
 
-      <div id="prompt-section" class="moves-section" hidden>
-        <p id="prompt-label" class="moves-label">Select a counter to move</p>
-      </div>
+      <div class="status-slot">
+        <div id="prompt-section" class="moves-section" hidden>
+          <p id="prompt-label" class="moves-label">Select which of the outer counters to move</p>
+        </div>
 
-      <div id="thinking-indicator" class="thinking-indicator" hidden>
-        Computer is thinking…
+        <div id="thinking-indicator" class="thinking-indicator" hidden>
+          Computer is thinking…
+        </div>
       </div>
 
       <div id="rules-panel" class="rules-panel">
@@ -119,6 +122,7 @@
   </main>
 
   <script src="../../navbar.js" data-root="../../" data-back-href="../index.html" data-back-label="Games"></script>
+  <script src="../attribution.js"></script>
   <script src="game.js"></script>
   <script data-goatcounter="https://georgewatkins.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

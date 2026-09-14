@@ -343,9 +343,27 @@ input[type="range"] {
   box-shadow: none;
 }
 
-/* ── Move buttons ────────────────────────────────────────────────── */
+/* ── Move buttons / thinking indicator ──────────────────────────────
+   These occupy the same slot (stacked via grid) so that whichever one
+   is showing, the slot is always the same height — the badge below
+   never jumps, regardless of how the two compare in size. */
 
-.moves-section { text-align: center; margin-bottom: 1rem; }
+.status-slot {
+  display: grid;
+  margin-bottom: 1rem;
+}
+
+.status-slot > * {
+  grid-area: 1 / 1;
+}
+
+#moves-section[hidden],
+#thinking-indicator[hidden] {
+  display: block;
+  visibility: hidden;
+}
+
+.moves-section { text-align: center; }
 
 .moves-label {
   color: var(--muted);
@@ -391,7 +409,7 @@ input[type="range"] {
   text-align: center;
   color: var(--muted);
   font-style: italic;
-  padding: 0.7rem;
+  font-size: 0.92rem;
   animation: pulse 1.3s ease-in-out infinite;
 }
 

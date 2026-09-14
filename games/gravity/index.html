@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gravity</title>
   <link rel="stylesheet" href="../../navbar.css">
+  <link rel="stylesheet" href="../attribution.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -96,12 +97,14 @@
         <svg id="gravity-board" class="gravity-board"></svg>
       </div>
 
-      <div id="prompt-section" class="moves-section" hidden>
-        <p id="prompt-label" class="moves-label">Select a vertex to move the counter down to</p>
-      </div>
+      <div class="status-slot">
+        <div id="prompt-section" class="moves-section" hidden>
+          <p id="prompt-label" class="moves-label">Select a highlighted vertex to move the counter</p>
+        </div>
 
-      <div id="thinking-indicator" class="thinking-indicator" hidden>
-        Computer is thinking…
+        <div id="thinking-indicator" class="thinking-indicator" hidden>
+          Computer is thinking…
+        </div>
       </div>
 
       <div id="rules-panel" class="rules-panel">
@@ -128,6 +131,7 @@
   </main>
 
   <script src="../../navbar.js" data-root="../../" data-back-href="../index.html" data-back-label="Games"></script>
+  <script src="../attribution.js"></script>
   <script src="game.js"></script>
   <script data-goatcounter="https://georgewatkins.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>

@@ -444,7 +444,10 @@ function render() {
 
 function renderTurnIndicator() {
   if (state.over) {
-    turnIndicator.textContent = '';
+    // A non-breaking space (not '') keeps the pill's line box — and so its
+    // height — the same as when it holds real text, so nothing below it
+    // (the board, the "in association with" badge) shifts up at game over.
+    turnIndicator.textContent = ' ';
     turnIndicator.className = 'turn-indicator';
     return;
   }
@@ -537,17 +540,11 @@ function renderPrompt() {
   promptSection.hidden = false;
 
   if (state.phase === 'select-cell') {
-    promptLabel.textContent = 'Select a highlighted cell to move the counter there';
+    promptLabel.textContent = 'Select a new position to move the counter';
     return;
   }
 
-  const [p0, p1, p2] = sortedPositions();
-  const g1 = p1 - p0 - 1;
-  const g2 = p2 - p1 - 1;
-  const options = (g1 >= 1 ? 1 : 0) + (g2 >= 1 ? 1 : 0);
-  promptLabel.textContent = options === 2
-    ? 'Select one of the two highlighted counters to move'
-    : 'Select the highlighted counter to move';
+  promptLabel.textContent = 'Select which of the outer counters to move';
 }
 
 function renderGameOver() {

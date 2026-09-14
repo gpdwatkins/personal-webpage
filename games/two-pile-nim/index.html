@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Two-pile Nim</title>
   <link rel="stylesheet" href="../../navbar.css">
+  <link rel="stylesheet" href="../attribution.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -148,27 +149,29 @@
         </div>
       </div>
 
-      <div id="moves-section" class="moves-section">
-        <p class="moves-label">How many counters will you take, and from where?</p>
-        <div class="move-columns">
-          <div class="move-col">
-            <p class="move-group-label">Pile A</p>
-            <div id="move-buttons-a" class="move-buttons"></div>
+      <div class="status-slot">
+        <div id="moves-section" class="moves-section">
+          <p class="moves-label">How many counters do you wish to take?</p>
+          <div class="move-columns">
+            <div class="move-col">
+              <p class="move-group-label">Pile A</p>
+              <div id="move-buttons-a" class="move-buttons"></div>
+            </div>
+            <div class="move-col-spacer"></div>
+            <div class="move-col">
+              <p class="move-group-label">Pile B</p>
+              <div id="move-buttons-b" class="move-buttons"></div>
+            </div>
           </div>
-          <div class="move-col-spacer"></div>
-          <div class="move-col">
-            <p class="move-group-label">Pile B</p>
-            <div id="move-buttons-b" class="move-buttons"></div>
+          <div id="move-both" class="move-both" hidden>
+            <p class="move-group-label">Both piles</p>
+            <div id="move-buttons-both" class="move-buttons"></div>
           </div>
         </div>
-        <div id="move-both" class="move-both" hidden>
-          <p class="move-group-label">Both piles</p>
-          <div id="move-buttons-both" class="move-buttons"></div>
-        </div>
-      </div>
 
-      <div id="thinking-indicator" class="thinking-indicator" hidden>
-        Computer is thinking…
+        <div id="thinking-indicator" class="thinking-indicator" hidden>
+          Computer is thinking…
+        </div>
       </div>
 
       <div id="rules-panel" class="rules-panel">
@@ -194,6 +197,7 @@
   </main>
 
   <script src="../../navbar.js" data-root="../../" data-back-href="../index.html" data-back-label="Games"></script>
+  <script src="../attribution.js"></script>
   <script src="game.js"></script>
   <script data-goatcounter="https://georgewatkins.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
