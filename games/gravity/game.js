@@ -252,21 +252,44 @@ function applyMove(ni, nx) {
   state.busy = true;
 
   const mover = state.currentPlayer;
-  state.pos = { i: ni, x: nx };
+  const fromPos = state.pos;
+  const toPos = { i: ni, x: nx };
 
-  if (ni === state.board.H - 1) {
-    state.over = true;
-    state.winner = mover;
-    state.busy = false;
-    renderAll();
-    return;
-  }
-
-  state.currentPlayer = mover === 1 ? 2 : 1;
-  state.busy = false;
+  // Re-render now (clears the old highlights/prompt, via `busy`) before the
+  // counter's logical position changes, then hand off to the slide
+  // animation. state.pos itself - and therefore the new legal moves, game
+  // over check, and the computer's next turn - only become real once the
+  // counter has actually finished sliding there, so nothing ever has to be
+  // computed from (or clicked on) a mid-slide, non-vertex position.
   renderAll();
 
-  if (isComputerTurn()) scheduleComputer();
+  let finished = false;
+  function finish() {
+    if (finished) return;
+    finished = true;
+    cancelAnim();
+    positionCounter(toPos.i, toPos.x); // snap to the exact resting spot
+
+    state.pos = toPos;
+    if (toPos.i === state.board.H - 1) {
+      state.over = true;
+      state.winner = mover;
+    } else {
+      state.currentPlayer = mover === 1 ? 2 : 1;
+    }
+    state.busy = false;
+    renderAll();
+
+    if (isComputerTurn()) scheduleComputer();
+  }
+
+  const cancelAnim = animateCounterSlide(fromPos, toPos, finish);
+
+  // Safety net: requestAnimationFrame is throttled or fully paused in a
+  // backgrounded/minimised tab, which would otherwise leave the game stuck
+  // mid-move indefinitely. This guarantees the move still resolves on
+  // schedule even if the animation itself never gets to run.
+  setTimeout(finish, COUNTER_SLIDE_MS + 150);
 }
 
 function scheduleComputer() {
@@ -374,10 +397,51 @@ function renderAll() {
   renderGameOver();
 }
 
-function updateBoard() {
-  const { i, x } = state.pos;
+// Every edge on the board is the same length (the board is built from
+// equilateral triangles - see the comment above buildBoard), so unlike the
+// hopper game's hops, a gravity move never needs its duration scaled by
+// distance - a single fixed duration always matches the distance travelled.
+const COUNTER_SLIDE_MS = 450;
+
+// Slow-start, slow-end easing (fast in the middle) - matches the hopper game.
+function easeInOutCubic(t) {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
+function positionCounter(i, x) {
   counterEl.setAttribute('cx', boardGeom.sx(x));
   counterEl.setAttribute('cy', boardGeom.sy(i));
+}
+
+// Animates the counter from fromPos to toPos, calling onDone once it
+// arrives. state.pos is deliberately left untouched until then (see
+// applyMove) - the animation only ever moves between two real vertices, and
+// nothing reads a position while one is in flight.
+function animateCounterSlide(fromPos, toPos, onDone) {
+  const startCx = boardGeom.sx(fromPos.x);
+  const startCy = boardGeom.sy(fromPos.i);
+  const targetCx = boardGeom.sx(toPos.x);
+  const targetCy = boardGeom.sy(toPos.i);
+  const startTime = performance.now();
+  let cancelled = false;
+
+  function frame(now) {
+    if (cancelled) return;
+    const t = Math.min(1, (now - startTime) / COUNTER_SLIDE_MS);
+    const eased = easeInOutCubic(t);
+    counterEl.setAttribute('cx', startCx + (targetCx - startCx) * eased);
+    counterEl.setAttribute('cy', startCy + (targetCy - startCy) * eased);
+    if (t < 1) requestAnimationFrame(frame);
+    else onDone();
+  }
+  requestAnimationFrame(frame);
+
+  return () => { cancelled = true; };
+}
+
+function updateBoard() {
+  const { i, x } = state.pos;
+  positionCounter(i, x);
 
   Object.values(vertexEls).forEach(el => {
     el.classList.remove('legal', 'p1', 'p2');

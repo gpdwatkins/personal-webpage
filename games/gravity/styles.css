@@ -247,7 +247,6 @@ main {
   stroke: rgba(0,0,0,0.35);
   stroke-width: 1;
   pointer-events: none;
-  transition: cx 0.25s ease, cy 0.25s ease;
 }
 
 /* ── Prompt ──────────────────────────────────────────────────────── */
