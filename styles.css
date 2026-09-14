@@ -281,6 +281,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
+    text-decoration: none;
 }
 
 .games-preview-grid img {
